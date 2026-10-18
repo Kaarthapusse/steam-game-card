@@ -48,7 +48,7 @@ font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 small_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 try:
-    nickname_font = ImageFont.truetype(font_path, 38)
+    nickname_font = ImageFont.truetype(font_path, 44)
     title_font = ImageFont.truetype(font_path, 30)
     hours_font = ImageFont.truetype(small_path, 25)
 except OSError:
