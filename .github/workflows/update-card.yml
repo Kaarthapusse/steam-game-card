@@ -1,0 +1,37 @@
+
+name: Update Steam Game Card
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-card:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate image
+        env:
+          STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
+        run: python generate_card.py
+
+      - name: Save updated image
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Steam game card"
+          file_pattern: steam-game-card.png
