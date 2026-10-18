@@ -53,8 +53,9 @@ except OSError:
     title_font = ImageFont.load_default()
     hours_font = ImageFont.load_default()
 
-draw.text((480, 75), title[:30], fill="white", font=title_font)
-draw.text((480, 135), f"{hours:,.1f} heures de jeu", fill="#65d46e",
+draw.text((480, 35), "Kaarthapusse", fill="red", font=hours_font)
+draw.text((480, 85), title[:30], fill="white", font=title_font)
+draw.text((480, 145), f"{hours:,.1f} heures de jeu", fill="#65d46e",
           font=hours_font)
 
 image.save("steam-game-card.png")
