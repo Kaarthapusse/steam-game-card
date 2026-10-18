@@ -1,3 +1,4 @@
+
 import os
 import requests
 from PIL import Image, ImageDraw, ImageFont
@@ -47,15 +48,21 @@ font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 small_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 try:
+    nickname_font = ImageFont.truetype(font_path, 38)
     title_font = ImageFont.truetype(font_path, 30)
     hours_font = ImageFont.truetype(small_path, 25)
 except OSError:
+    nickname_font = ImageFont.load_default()
     title_font = ImageFont.load_default()
     hours_font = ImageFont.load_default()
 
-draw.text((480, 35), "Kaarthapusse", fill="red", font=hours_font)
+draw.text((480, 20), "Kaarthapusse", fill="#ff3333", font=nickname_font)
 draw.text((480, 85), title[:30], fill="white", font=title_font)
-draw.text((480, 145), f"{hours:,.1f} heures de jeu", fill="#65d46e",
-          font=hours_font)
+draw.text(
+    (480, 145),
+    f"{hours:,.1f} heures de jeu",
+    fill="#65d46e",
+    font=hours_font
+)
 
 image.save("steam-game-card.png")
